@@ -40,25 +40,26 @@ while True:
         print 'Sorry to see you go.  Come back again soon.'
         sys.exit(0)  # New, but works to quit the program
 
-    # fix to check for integer numbers
+    bet = raw_input('How many coins do you want to bet (defaults to 1, enter 0 to quit): ')
+    if bet == '':
+        bet = 1
     try:
-        bet = int(raw_input('How many coins do you want to bet (defaults to 1, enter 0 to quit): '))
-        if bet <= 0:
-            print "Please enter a positive integer"
-            continue
-
+        bet = int(bet)
+        pass
     except:
-        print "Please enter a positive integer."
+        print "You must enter a positive int"
         continue
 
+    if bet < 0:
+        print "You must enter a positive int"
+        continue
 
     if bet > nCoins:
         print "Sorry, you do not have that many coins, you only have: ", nCoins
         continue
 
-
-    if bet == '':
-        bet = 1
+    if bet == 0:
+        sys.exit(0)
 
     resultList = []
     for spin in range(3):
